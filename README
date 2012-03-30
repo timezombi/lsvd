@@ -1,0 +1,10 @@
+This is still a work in progress. Do not use yet.
+
+lsvd is a nifty utility to list the video durations of a given set of files.
+
+If lsvd is given a directory, it will find all the movie files in the directory and list their individual video durations.
+
+At the end of the list of files is the sum of all the video lengths.
+
+This utility is incredibly useful if you are on a schedule and need to know how long it will take to watch a bunch of
+videos ahead of time. I am currently using it to plan out viewing lectures for the free Stanford Online Courses.
