@@ -1,5 +1,7 @@
-#3/29/2012
-#Converts a single video files into a summed duration
+#Author:  Brandon Barton
+#Created: 3/29/2012
+#Info:Converts a single video file into its video duration
+
 #TODO: Add test cases
 import subprocess, re, datetime
 from dateutil.parser import *
@@ -15,12 +17,15 @@ def getDurationTimestamp(filename):
 
 	#Check for case of not a video file
 	if not stamp:
-		return datetime.timedelta() #Return empty timedelta for non-video files
+		return datetime.timedelta() #Return empty timedelta for non-video files (Will add exception handling later)
 	else:
 		stamp = stamp[0]
 
+	#Regular expression extracts the timestamp string
 	trimmedStamp = re.findall(r'\d\d:\d\d:\d\d',stamp)
 	trimmedStamp = trimmedStamp[0]
-	ts = parse(trimmedStamp) #Turns the timestamp string into a datetime object
+
+	#Turns the timestamp string into a datetime object
+	ts = parse(trimmedStamp)
 	return datetime.timedelta(hours = ts.hour, seconds = ts.second, minutes = ts.minute)
 

@@ -18,8 +18,9 @@ def listdirvd(path):
 	#Lists a single directory full of only video files
 	dirList=os.listdir(path)
 
+	#Convert to absolute paths to make the timestamp string processor happy
 	for i in range(len(dirList)):
-		dirList[i] = os.path.join(path, dirList[i])
+		dirList[i] = os.path.abspath(dirList[i])
 
 	accTime = datetime.timedelta()
 
@@ -47,9 +48,9 @@ def lsvd():
 		if os.path.isdir(cur):
 			timedeltasum += listdirvd(cur)
 		else: 
-			#UNWISE: Assumes that it is a video file, otherwise. Hopefully ffprobe doesn't break with this input. 
+			#UNWISE: Assumes that it is a video file, otherwise. ffprobe seems to handle it fine, though.
 			#TODO: Add explicit exception handling.
-			timedeltasum += getDurationTimestamp(os.path.abspath(cur)) #Should probably check to see if cur is already in path form.
+			timedeltasum += getDurationTimestamp(os.path.abspath(cur)) #TODO: Check to see if cur is already in path form.
 
 	#Return the full sum of all the time deltas
 	return timedeltasum
