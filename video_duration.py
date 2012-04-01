@@ -1,6 +1,7 @@
 #Author:  Brandon Barton
 #Created: 3/29/2012
 #Info:Converts a single video file into its video duration
+#Deps: ffmpeg
 
 #TODO: Add test cases
 import subprocess, re, datetime
